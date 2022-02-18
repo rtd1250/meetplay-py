@@ -13,6 +13,9 @@ print("\n\n\nsr init done")
 keyboard = Controller()
 audioFile = 'audio.wav'
 
+# word list to listen for
+wordList = ["example", "test", "words"]
+
 # set the audio device monitor and mic here, which can be found by running
 # pacmd list-sources | grep -e 'index:' -e device.string -e 'name:'
 # for example: alsa_output.device.monitor
@@ -50,8 +53,9 @@ def recognize():
             audio = r.listen(source)
     text = r.recognize_google_cloud(audio, credentials_json=GOOGLE_CLOUD_SPEECH_CREDENTIALS, language='en-GB')
     print(text)
-    if "word" in text or "test" in text:
-        return 1
+    for word in wordList:
+        if word in text:
+            return 1
 
 
 while True:
