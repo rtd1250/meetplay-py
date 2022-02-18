@@ -71,9 +71,10 @@ text = r.recognize_sphinx(audio)
 ```
 
 \
-To set the words the program will listen for, edit the if statement in meetplay.py (will change that later):
+To set the words the program will listen for, edit the word list in meetplay.py:
 ```python
-if "word" in text or "test" in text:
+# word list to listen for
+wordList = ["example", "test", "words"]
 ```
 
 \
